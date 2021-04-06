@@ -359,6 +359,7 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_USB_Init();
   MX_RNG_Init();
+  MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
   tx_kernel_enter();
   /* USER CODE END 2 */

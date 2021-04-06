@@ -5,9 +5,9 @@
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="ee5450-module2-hw1" targetName="threadx" />
-      <config projectName="ee5450-module2-hw1" targetName="ee5450-module2-hw1.elf" />
-      <config projectName="ee5450-module2-hw1" targetName="netxduo" />
+      <config projectName="ee5450-module2-hw0" targetName="threadx" />
+      <config projectName="ee5450-module2-hw0" targetName="netxduo" />
+      <config projectName="ee5450-module2-hw0" targetName="ee5450-module2-hw0.elf" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -18,9 +18,13 @@
   <component name="ChangeListManager">
     <list default="true" id="a8530759-449d-4624-b9d3-1183016fe538" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/main.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mxproject" beforeDir="false" afterPath="$PROJECT_DIR$/.mxproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/spi.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/spi.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/gpio.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/gpio.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/spi.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/spi.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ee5450-module2-hw1.ioc" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +50,6 @@
       </list>
     </option>
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -83,22 +86,22 @@
     </key>
   </component>
   <component name="RunManager" selected="OpenOCD Download &amp; Run.OCD ee5450-module2-hw0">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ee5450-module2-hw0.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-hw0" TARGET_NAME="ee5450-module2-hw0.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee5450-module2-hw0" RUN_TARGET_NAME="ee5450-module2-hw0.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ee5450-module2-hw1.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-hw1" TARGET_NAME="ee5450-module2-hw1.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee5450-module2-hw1" RUN_TARGET_NAME="ee5450-module2-hw1.elf">
+    <configuration name="netxduo" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-hw0" TARGET_NAME="netxduo" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="netxduo" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-hw1" TARGET_NAME="netxduo" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="threadx" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-hw1" TARGET_NAME="threadx" CONFIG_NAME="Debug">
+    <configuration name="threadx" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-hw0" TARGET_NAME="threadx" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -109,7 +112,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.ee5450-module2-hw1.elf" />
+      <item itemvalue="CMake Application.ee5450-module2-hw0.elf" />
       <item itemvalue="CMake Application.netxduo" />
       <item itemvalue="CMake Application.threadx" />
       <item itemvalue="OpenOCD Download &amp; Run.OCD ee5450-module2-hw0" />
@@ -127,6 +130,7 @@
       <workItem from="1615936195325" duration="1508000" />
       <workItem from="1616105918615" duration="71846000" />
       <workItem from="1616870615664" duration="8267000" />
+      <workItem from="1617742875186" duration="2053000" />
     </task>
     <servers />
   </component>
