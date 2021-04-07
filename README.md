@@ -1,4 +1,4 @@
-# ee5450-module2-hw1: MQTT streaming of sensors
+# ee5450-module2-camera: ArduCam 2MP Mini Plus demo with ThreadX
 
 
 

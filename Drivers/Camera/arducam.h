@@ -1,0 +1,8 @@
+//
+// Created by curty on 4/6/2021.
+//
+
+#ifndef EE5450_MODULE2_HW0_ARDUCAM_H
+#define EE5450_MODULE2_HW0_ARDUCAM_H
+
+#endif //EE5450_MODULE2_HW0_ARDUCAM_H

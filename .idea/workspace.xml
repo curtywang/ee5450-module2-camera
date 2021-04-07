@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="ee5450-module2-hw0" targetName="threadx" />
-      <config projectName="ee5450-module2-hw0" targetName="netxduo" />
-      <config projectName="ee5450-module2-hw0" targetName="ee5450-module2-hw0.elf" />
+      <config projectName="ee5450-module2-camera" targetName="netxduo" />
+      <config projectName="ee5450-module2-camera" targetName="ee5450-module2-camera.elf" />
+      <config projectName="ee5450-module2-camera" targetName="threadx" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -16,12 +13,21 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8530759-449d-4624-b9d3-1183016fe538" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Drivers/Camera/ov2640.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Drivers/Camera/ov2640.h" afterDir="false" />
+    <list default="true" id="f845f09c-bb04-4f2d-a1c3-2bb2b4498768" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Drivers/Camera/arducam.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Drivers/Camera/arducam.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/arduchip.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cproject" beforeDir="false" afterPath="$PROJECT_DIR$/.cproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ee5450-module2-hw0.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ee5450-module2-notes.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/OCD_ee5450_module2_hw0.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists_template.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/main.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,26 +37,11 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="EmbeddedSvdWindowState">
-    <option name="columnWidths">
-      <list>
-        <option value="187" />
-        <option value="82" />
-        <option value="1380" />
-      </list>
-    </option>
-    <option name="columnOrder">
-      <list>
-        <option value="Name" />
-        <option value="Value" />
-        <option value="Description" />
-      </list>
-    </option>
-  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1pcvspMxp1gkYRSriNLVyqDyjPw" />
+  <component name="ProjectId" id="1qr9kNAb7UxgtMaVFXRkaM9YjWQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -63,42 +54,25 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="CMakeSettings" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\curty\GitHub\ee5450-module2-notes\Core" />
-      <recent name="C:\Users\curty\GitHub\ee5450-module2-notes\Core\Inc" />
-      <recent name="C:\Users\curty\GitHub\ee5450-module2-notes\Core\Startup" />
-      <recent name="C:\Users\curty\GitHub\ee5450-module2-notes" />
-      <recent name="C:\Users\curty\GitHub\ee5450-module2-notes\Drivers" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\curty\GitHub\ee5450-module2-notes\netxduo" />
-      <recent name="C:\Users\curty\GitHub\ee5450-module2-notes" />
-      <recent name="C:\Users\curty\GitHub\ee5450-module2-notes\Drivers\WiFi\Inc" />
-      <recent name="C:\Users\curty\GitHub\ee5450-module2-notes\Drivers\WiFi" />
-      <recent name="C:\Users\curty\GitHub\ee5450-module2-notes\Core\Src" />
-    </key>
-  </component>
-  <component name="RunManager" selected="OpenOCD Download &amp; Run.OCD ee5450-module2-hw0">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ee5450-module2-hw0.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-hw0" TARGET_NAME="ee5450-module2-hw0.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee5450-module2-hw0" RUN_TARGET_NAME="ee5450-module2-hw0.elf">
+  <component name="RunManager" selected="OpenOCD Download &amp; Run.OCD ee5450-module2-camera">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="netxduo" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-hw0" TARGET_NAME="netxduo" CONFIG_NAME="Debug">
+    <configuration name="ee5450-module2-camera.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-camera" TARGET_NAME="ee5450-module2-camera.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee5450-module2-camera" RUN_TARGET_NAME="ee5450-module2-camera.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="threadx" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-hw0" TARGET_NAME="threadx" CONFIG_NAME="Debug">
+    <configuration name="netxduo" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-camera" TARGET_NAME="netxduo" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="threadx" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-camera" TARGET_NAME="threadx" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -109,25 +83,23 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.ee5450-module2-hw0.elf" />
+      <item itemvalue="CMake Application.ee5450-module2-camera.elf" />
       <item itemvalue="CMake Application.netxduo" />
       <item itemvalue="CMake Application.threadx" />
-      <item itemvalue="OpenOCD Download &amp; Run.OCD ee5450-module2-hw0" />
+      <item itemvalue="OpenOCD Download &amp; Run.OCD ee5450-module2-camera" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a8530759-449d-4624-b9d3-1183016fe538" name="Default Changelist" comment="" />
-      <created>1615495402313</created>
+      <changelist id="f845f09c-bb04-4f2d-a1c3-2bb2b4498768" name="Default Changelist" comment="" />
+      <created>1617826984250</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1615495402313</updated>
-      <workItem from="1615495426818" duration="11560000" />
-      <workItem from="1615936195325" duration="1508000" />
-      <workItem from="1616105918615" duration="71846000" />
-      <workItem from="1616870615664" duration="8267000" />
-      <workItem from="1617742875186" duration="4350000" />
+      <updated>1617826984250</updated>
+      <workItem from="1617826985481" duration="17000" />
+      <workItem from="1617827034028" duration="245000" />
+      <workItem from="1617827285312" duration="810000" />
     </task>
     <servers />
   </component>
@@ -145,25 +117,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Core/Src/main.c</url>
-          <line>177</line>
-          <option name="timeStamp" value="81" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Core/Src/main.c</url>
-          <line>246</line>
-          <option name="timeStamp" value="93" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

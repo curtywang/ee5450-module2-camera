@@ -40,6 +40,7 @@ extern "C" {
 #include "stm32l4s5i_iot01_tsensor.h"
 #include "wifi.h"
 #include "nxd_mqtt_client.h"
+#include "ov2640.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -61,6 +62,7 @@ struct global_data_t {
     TX_BYTE_POOL byte_pool_0;
     TX_THREAD threads[5];
     TX_THREAD thread_network_setup;
+    TX_THREAD thread_camera_setup;
     TX_MUTEX mutex_i2c2;
     TX_MUTEX mutex_mqtt;
     TX_MUTEX mutex_network_reset;
@@ -81,6 +83,9 @@ struct global_data_t {
     ULONG interval_accelerometer;
     ULONG interval_mqtt;
     // TODO: Add more input parameters here as needed.
+
+    /* camera framebuffer */
+    unsigned char framebuffer[0x5FFFF];
 };
 /* USER CODE END ET */
 
@@ -266,7 +271,6 @@ void Error_Handler(void);
 #define ISM43362_DRDY_EXTI1_GPIO_Port GPIOE
 #define ISM43362_DRDY_EXTI1_EXTI_IRQn EXTI1_IRQn
 /* USER CODE BEGIN Private defines */
-extern  SPI_HandleTypeDef hspi;
 void SPI3_IRQHandler(void);
 /* USER CODE END Private defines */
 

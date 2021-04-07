@@ -50,6 +50,7 @@ ULONG global_memory_area[(sizeof(struct global_data_t) / sizeof(ULONG)) + 10 * s
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
+void thread_camera_setup(ULONG global_data_ulong);
 void thread_network_setup(ULONG global_data_ulong);
 _Noreturn void blink_PA_5(ULONG global_data_ulong);
 _Noreturn void blink_PB_14(ULONG global_data_ulong);
@@ -78,7 +79,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
  */
 void SPI3_IRQHandler(void)
 {
-    HAL_SPI_IRQHandler(&hspi);
+    HAL_SPI_IRQHandler(&hspi3);
 }
 
 
@@ -93,10 +94,10 @@ void tx_application_define(void* first_unused_memory) {
     systick_interval_set(TX_TIMER_TICKS_PER_SECOND);
 
     status = tx_event_flags_create(&global_event_flags, "global event flags");
-    status = tx_byte_pool_create(&global_byte_pool, "global byte pool",
-                                 global_memory_area, sizeof(struct global_data_t) + 10 * sizeof(ULONG));
 
     /* allocate global data structure */
+    status = tx_byte_pool_create(&global_byte_pool, "global byte pool",
+                                 global_memory_area, sizeof(struct global_data_t) + 10 * sizeof(ULONG));
     status = tx_byte_allocate(&global_byte_pool, (VOID**)&pointer,
                               sizeof(struct global_data_t), TX_NO_WAIT);
     struct global_data_t* global_data = (struct global_data_t*)pointer;
@@ -111,48 +112,64 @@ void tx_application_define(void* first_unused_memory) {
     status = tx_mutex_create(&global_data->mutex_i2c2, "I2C channel 2 mutex", TX_NO_INHERIT);
     status = tx_mutex_create(&global_data->mutex_network_reset, "network setup mutex", TX_NO_INHERIT);
 
+    /* allocate thread-local stacks */
     status = tx_byte_pool_create(&global_data->byte_pool_0, "byte pool 0",
                         global_data->memory_area, BYTE_POOL_SIZE);
 
     status = tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
-    status = tx_thread_create(&global_data->thread_network_setup, "thread net test",
-                              thread_network_setup, (ULONG)global_data,
+    status = tx_thread_create(&global_data->thread_camera_setup, "thread camera setup",
+                              thread_camera_setup, (ULONG)global_data,
                               pointer, STACK_SIZE,
                               1, 1, TX_NO_TIME_SLICE, TX_AUTO_START);
     if (status != TX_SUCCESS)
         printf("thread creation failed\r\n");
 
-    tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
-    status = tx_thread_create(&global_data->threads[0], "thread 0",
-                              blink_PA_5, (ULONG)global_data,
-                              pointer, STACK_SIZE,
-                              3, 3, TX_NO_TIME_SLICE, TX_AUTO_START);
-    if (status != TX_SUCCESS)
-        printf("thread creation failed\r\n");
+//    status = tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
+//    status = tx_thread_create(&global_data->thread_network_setup, "thread net test",
+//                              thread_network_setup, (ULONG)global_data,
+//                              pointer, STACK_SIZE,
+//                              1, 1, TX_NO_TIME_SLICE, TX_AUTO_START);
+//    if (status != TX_SUCCESS)
+//        printf("thread creation failed\r\n");
+//
+//    tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
+//    status = tx_thread_create(&global_data->threads[0], "thread 0",
+//                              blink_PA_5, (ULONG)global_data,
+//                              pointer, STACK_SIZE,
+//                              3, 3, TX_NO_TIME_SLICE, TX_AUTO_START);
+//    if (status != TX_SUCCESS)
+//        printf("thread creation failed\r\n");
+//
+//    tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
+//    status = tx_thread_create(&global_data->threads[1], "thread 1",
+//                              blink_PB_14, (ULONG)global_data,
+//                              pointer, STACK_SIZE,
+//                              3, 3, TX_NO_TIME_SLICE, TX_AUTO_START);
+//    if (status != TX_SUCCESS)
+//        printf("thread creation failed\r\n");
+//
+//    tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
+//    status = tx_thread_create(&global_data->threads[2], "thread 2",
+//                              thread_temperature, (ULONG)global_data,
+//                              pointer, STACK_SIZE,
+//                              2, 2, TX_NO_TIME_SLICE, TX_AUTO_START);
+//    if (status != TX_SUCCESS)
+//        printf("thread creation failed\r\n");
+//
+//    tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
+//    status = tx_thread_create(&global_data->threads[3], "thread 3",
+//                              thread_accelerometer, (ULONG)global_data,
+//                              pointer, STACK_SIZE,
+//                              2, 2, TX_NO_TIME_SLICE, TX_AUTO_START);
+//    if (status != TX_SUCCESS)
+//        printf("thread creation failed\r\n");
+}
 
-    tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
-    status = tx_thread_create(&global_data->threads[1], "thread 1",
-                              blink_PB_14, (ULONG)global_data,
-                              pointer, STACK_SIZE,
-                              3, 3, TX_NO_TIME_SLICE, TX_AUTO_START);
-    if (status != TX_SUCCESS)
-        printf("thread creation failed\r\n");
 
-    tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
-    status = tx_thread_create(&global_data->threads[2], "thread 2",
-                              thread_temperature, (ULONG)global_data,
-                              pointer, STACK_SIZE,
-                              2, 2, TX_NO_TIME_SLICE, TX_AUTO_START);
-    if (status != TX_SUCCESS)
-        printf("thread creation failed\r\n");
-
-    tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
-    status = tx_thread_create(&global_data->threads[3], "thread 3",
-                              thread_accelerometer, (ULONG)global_data,
-                              pointer, STACK_SIZE,
-                              2, 2, TX_NO_TIME_SLICE, TX_AUTO_START);
-    if (status != TX_SUCCESS)
-        printf("thread creation failed\r\n");
+void thread_camera_setup(ULONG global_data_ulong) {
+    struct global_data_t* global_data = (struct global_data_t*)global_data_ulong;
+    volatile UINT status;
+    OV2640_Init(&hi2c1);
 }
 
 
