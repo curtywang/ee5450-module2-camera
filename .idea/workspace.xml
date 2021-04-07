@@ -17,7 +17,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8530759-449d-4624-b9d3-1183016fe538" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Drivers/Camera/ov2640.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Drivers/Camera/ov2640.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists_template.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +127,7 @@
       <workItem from="1615936195325" duration="1508000" />
       <workItem from="1616105918615" duration="71846000" />
       <workItem from="1616870615664" duration="8267000" />
-      <workItem from="1617742875186" duration="2938000" />
+      <workItem from="1617742875186" duration="4350000" />
     </task>
     <servers />
   </component>

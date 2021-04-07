@@ -57,7 +57,8 @@ endif ()
 
 include_directories(Core/Inc Drivers/STM32L4xx_HAL_Driver/Inc Drivers/STM32L4xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32L4xx/Include Drivers/CMSIS/Include
                     Drivers/BSP/B-L4S5I-IOT01
-                    Drivers/WiFi/Inc)
+                    Drivers/WiFi/Inc
+                    Drivers/Camera)
 
 # include ThreadX subdirectories
 add_subdirectory(${CMAKE_SOURCE_DIR}/threadx threadx)
