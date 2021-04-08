@@ -169,7 +169,17 @@ void tx_application_define(void* first_unused_memory) {
 void thread_camera_setup(ULONG global_data_ulong) {
     struct global_data_t* global_data = (struct global_data_t*)global_data_ulong;
     volatile UINT status;
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_SET);
     OV2640_Init(&hi2c1);
+    tx_thread_sleep(1);
+    OV2640_ResolutionOptions(RES_640X480);
+    tx_thread_sleep(1);
+    arducam_init(&hspi1, GPIOA, GPIO_PIN_2);
+    status = arducam_get_version();
+    while (status != 0x73) {
+        status = arducam_get_version();
+    }
+    // TODO: event flag here to allow camera to continue
 }
 
 

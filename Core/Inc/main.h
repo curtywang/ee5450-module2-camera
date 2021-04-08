@@ -41,6 +41,7 @@ extern "C" {
 #include "wifi.h"
 #include "nxd_mqtt_client.h"
 #include "ov2640.h"
+#include "arducam.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -51,8 +52,11 @@ extern "C" {
 #define TX_PACKET_SIZE 1200  // default payload size from ES_WIFI_PAYLOAD_SIZE
 #define TX_POOL_SIZE ((TX_PACKET_SIZE + sizeof(NX_PACKET)) * TX_PACKET_COUNT)
 
-#define EVT_BUTTON_PRESSED 0x1
-#define EVT_WIFI_READY 0x4
+#define EVT_BUTTON_PRESSED 0x01
+#define EVT_WIFI_READY 0x04
+#define EVT_CAMERA_READY 0x08
+
+#define FRAMEBUFFER_SIZE 0x5FFFF
 
 extern TX_EVENT_FLAGS_GROUP global_event_flags;
 
@@ -85,7 +89,7 @@ struct global_data_t {
     // TODO: Add more input parameters here as needed.
 
     /* camera framebuffer */
-    unsigned char framebuffer[0x5FFFF];
+    uint8_t framebuffer[FRAMEBUFFER_SIZE];
 };
 /* USER CODE END ET */
 
@@ -140,10 +144,6 @@ void Error_Handler(void);
 #define ARD_D4_GPIO_Port GPIOA
 #define ARD_D7_Pin GPIO_PIN_4
 #define ARD_D7_GPIO_Port GPIOA
-#define ARD_D12_Pin GPIO_PIN_6
-#define ARD_D12_GPIO_Port GPIOA
-#define ARD_D11_Pin GPIO_PIN_7
-#define ARD_D11_GPIO_Port GPIOA
 #define ARD_A1_Pin GPIO_PIN_4
 #define ARD_A1_GPIO_Port GPIOC
 #define ARD_A0_Pin GPIO_PIN_5

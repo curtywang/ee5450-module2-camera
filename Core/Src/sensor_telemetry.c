@@ -57,4 +57,15 @@ void get_accelerometer_message(struct global_data_t* global_data, char* message,
 }
 
 
+/**
+ * @brief fill the framebuffer with a capture and get number of bytes of image
+ * @param global_data: poitner to the global data structure
+ * @return size of the image in number of bytes
+ */
+size_t get_framebuffer_from_camera(struct global_data_t* global_data) {
+    size_t num_bytes = arducam_read_image(FRAMEBUFFER_SIZE, global_data->framebuffer);
+    return num_bytes;
+}
+
+
 /* TODO: put your function definitions for the other sensors here here */
