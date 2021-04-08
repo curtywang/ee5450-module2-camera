@@ -15,15 +15,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f845f09c-bb04-4f2d-a1c3-2bb2b4498768" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/main.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/gpio.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/gpio.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/sensor_telemetry.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/sensor_telemetry.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/spi.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/spi.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/Camera/arducam.c" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/Camera/arducam.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drivers/Camera/arducam.h" beforeDir="false" afterPath="$PROJECT_DIR$/Drivers/Camera/arducam.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/arduchip.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/arduchip.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ee5450-module2-camera.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/ee5450-module2-camera.ioc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,35 +54,34 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="cmake.loaded.for.project" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Debugger.ObjectiveC" />
   </component>
   <component name="RunManager" selected="OpenOCD Download &amp; Run.OCD ee5450-module2-camera">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ee5450-module2-camera.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-camera" TARGET_NAME="ee5450-module2-camera.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee5450-module2-camera" RUN_TARGET_NAME="ee5450-module2-camera.elf">
+    <configuration name="ee5450-module2-camera.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-camera" TARGET_NAME="ee5450-module2-camera.elf" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee5450-module2-camera" RUN_TARGET_NAME="ee5450-module2-camera.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="netxduo" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-camera" TARGET_NAME="netxduo" CONFIG_NAME="Debug">
+    <configuration name="netxduo" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-camera" TARGET_NAME="netxduo" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="threadx" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-camera" TARGET_NAME="threadx" CONFIG_NAME="Debug">
+    <configuration name="threadx" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee5450-module2-camera" TARGET_NAME="threadx" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -113,7 +104,9 @@
       <workItem from="1617826985481" duration="17000" />
       <workItem from="1617827034028" duration="245000" />
       <workItem from="1617827285312" duration="23642000" />
-      <workItem from="1617856492603" duration="1111000" />
+      <workItem from="1617856492603" duration="1369000" />
+      <workItem from="1617858811429" duration="5317000" />
+      <workItem from="1617918081681" duration="65000" />
     </task>
     <servers />
   </component>
