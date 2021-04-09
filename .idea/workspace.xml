@@ -15,7 +15,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f845f09c-bb04-4f2d-a1c3-2bb2b4498768" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arduchip.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/arduchip.drawio" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,11 +82,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="CMake Application.ee5450-module2-camera.elf" />
       <item itemvalue="CMake Application.netxduo" />
@@ -106,7 +102,8 @@
       <workItem from="1617827285312" duration="23642000" />
       <workItem from="1617856492603" duration="1369000" />
       <workItem from="1617858811429" duration="5317000" />
-      <workItem from="1617918081681" duration="65000" />
+      <workItem from="1617918081681" duration="3383000" />
+      <workItem from="1617994980400" duration="580000" />
     </task>
     <servers />
   </component>
@@ -129,9 +126,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Drivers/Camera/arducam.c</url>
-          <line>68</line>
-          <option name="timeStamp" value="12" />
+          <url>file://$PROJECT_DIR$/Core/Src/main.c</url>
+          <line>183</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -180,6 +180,8 @@ void thread_camera_setup(ULONG global_data_ulong) {
         status = arducam_get_version();
     }
     // TODO: event flag here to allow camera to continue
+    size_t num_bytes = arducam_read_image(FRAMEBUFFER_SIZE, global_data->framebuffer);
+    printf("num bytes image: %d", num_bytes);
 }
 
 
