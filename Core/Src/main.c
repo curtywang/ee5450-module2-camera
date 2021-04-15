@@ -45,6 +45,7 @@
 TX_EVENT_FLAGS_GROUP global_event_flags;
 TX_BYTE_POOL global_byte_pool;
 ULONG global_memory_area[(sizeof(struct global_data_t) / sizeof(ULONG)) + 10 * sizeof(ULONG)];
+extern SPI_HandleTypeDef hspi_wifi;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -79,7 +80,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
  */
 void SPI3_IRQHandler(void)
 {
-    HAL_SPI_IRQHandler(&hspi3);
+    HAL_SPI_IRQHandler(&hspi_wifi);
 }
 
 
@@ -116,21 +117,21 @@ void tx_application_define(void* first_unused_memory) {
     status = tx_byte_pool_create(&global_data->byte_pool_0, "byte pool 0",
                         global_data->memory_area, BYTE_POOL_SIZE);
 
-    status = tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
-    status = tx_thread_create(&global_data->thread_camera_setup, "thread camera setup",
-                              thread_camera_setup, (ULONG)global_data,
-                              pointer, STACK_SIZE,
-                              1, 1, TX_NO_TIME_SLICE, TX_AUTO_START);
-    if (status != TX_SUCCESS)
-        printf("thread creation failed\r\n");
-
 //    status = tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
-//    status = tx_thread_create(&global_data->thread_network_setup, "thread net test",
-//                              thread_network_setup, (ULONG)global_data,
+//    status = tx_thread_create(&global_data->thread_camera_setup, "thread camera setup",
+//                              thread_camera_setup, (ULONG)global_data,
 //                              pointer, STACK_SIZE,
 //                              1, 1, TX_NO_TIME_SLICE, TX_AUTO_START);
 //    if (status != TX_SUCCESS)
 //        printf("thread creation failed\r\n");
+
+    status = tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
+    status = tx_thread_create(&global_data->thread_network_setup, "thread net test",
+                              thread_network_setup, (ULONG)global_data,
+                              pointer, STACK_SIZE,
+                              1, 1, TX_NO_TIME_SLICE, TX_AUTO_START);
+    if (status != TX_SUCCESS)
+        printf("thread creation failed\r\n");
 //
 //    tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
 //    status = tx_thread_create(&global_data->threads[0], "thread 0",

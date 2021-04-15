@@ -31,7 +31,7 @@
 /* Private typedef -----------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-SPI_HandleTypeDef hspi;
+SPI_HandleTypeDef hspi_wifi;
 static  int volatile spi_rx_event = 0;
 static  int volatile spi_tx_event = 0;
 static  int volatile cmddata_rdy_rising_event = 0;
@@ -148,22 +148,22 @@ int8_t SPI_WIFI_Init(uint16_t mode)
   
   if (mode == ES_WIFI_INIT)
   {
-    hspi.Instance               = SPI3;
-    SPI_WIFI_MspInit(&hspi);
+      hspi_wifi.Instance               = SPI3;
+    SPI_WIFI_MspInit(&hspi_wifi);
+
+      hspi_wifi.Init.Mode              = SPI_MODE_MASTER;
+      hspi_wifi.Init.Direction         = SPI_DIRECTION_2LINES;
+      hspi_wifi.Init.DataSize          = SPI_DATASIZE_16BIT;
+      hspi_wifi.Init.CLKPolarity       = SPI_POLARITY_LOW;
+      hspi_wifi.Init.CLKPhase          = SPI_PHASE_1EDGE;
+      hspi_wifi.Init.NSS               = SPI_NSS_SOFT;
+      hspi_wifi.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8; /* 80/8= 10MHz (Inventek WIFI module supports up to 20MHz)*/
+    hspi_wifi.Init.FirstBit          = SPI_FIRSTBIT_MSB;
+      hspi_wifi.Init.TIMode            = SPI_TIMODE_DISABLE;
+      hspi_wifi.Init.CRCCalculation    = SPI_CRCCALCULATION_DISABLE;
+      hspi_wifi.Init.CRCPolynomial     = 0;
   
-    hspi.Init.Mode              = SPI_MODE_MASTER;
-    hspi.Init.Direction         = SPI_DIRECTION_2LINES;
-    hspi.Init.DataSize          = SPI_DATASIZE_16BIT;
-    hspi.Init.CLKPolarity       = SPI_POLARITY_LOW;
-    hspi.Init.CLKPhase          = SPI_PHASE_1EDGE;
-    hspi.Init.NSS               = SPI_NSS_SOFT;
-    hspi.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8; /* 80/8= 10MHz (Inventek WIFI module supports up to 20MHz)*/
-    hspi.Init.FirstBit          = SPI_FIRSTBIT_MSB;
-    hspi.Init.TIMode            = SPI_TIMODE_DISABLE;
-    hspi.Init.CRCCalculation    = SPI_CRCCALCULATION_DISABLE;
-    hspi.Init.CRCPolynomial     = 0;
-  
-    if(HAL_SPI_Init( &hspi ) != HAL_OK)
+    if(HAL_SPI_Init( &hspi_wifi ) != HAL_OK)
     {
       return -1;
     }
@@ -212,7 +212,7 @@ int8_t SPI_WIFI_ResetModule(void)
  
   while (WIFI_IS_CMDDATA_READY())
   {
-    Status = HAL_SPI_Receive(&hspi , &Prompt[count], 1, 0xFFFF);
+    Status = HAL_SPI_Receive(&hspi_wifi , &Prompt[count], 1, 0xFFFF);
     count += 2;
     if(((HAL_GetTick() - tickstart ) > 0xFFFF) || (Status != HAL_OK))
     {
@@ -237,7 +237,7 @@ int8_t SPI_WIFI_ResetModule(void)
   */
 int8_t SPI_WIFI_DeInit(void)
 {
-  HAL_SPI_DeInit( &hspi );
+  HAL_SPI_DeInit( &hspi_wifi );
 #ifdef  WIFI_USE_CMSIS_OS
   osMutexDelete(spi_mutex);
   osMutexDelete(es_wifi_mutex);
@@ -349,7 +349,7 @@ int16_t SPI_WIFI_ReceiveData(uint8_t *pData, uint16_t len, uint32_t timeout)
     if((length < len) || (!len))
     {
       spi_rx_event=1;
-      if (HAL_SPI_Receive_IT(&hspi, tmp, 1) != HAL_OK) {
+      if (HAL_SPI_Receive_IT(&hspi_wifi, tmp, 1) != HAL_OK) {
         WIFI_DISABLE_NSS();
         UNLOCK_SPI();
         return ES_WIFI_ERROR_SPI_FAILED;
@@ -402,7 +402,7 @@ int16_t SPI_WIFI_SendData( uint8_t *pdata,  uint16_t len, uint32_t timeout)
   if (len > 1)
   {
     spi_tx_event=1;
-    if( HAL_SPI_Transmit_IT(&hspi, (uint8_t *)pdata , len/2) != HAL_OK)
+    if(HAL_SPI_Transmit_IT(&hspi_wifi, (uint8_t *)pdata , len / 2) != HAL_OK)
     {
       WIFI_DISABLE_NSS();
       UNLOCK_SPI();
@@ -417,7 +417,7 @@ int16_t SPI_WIFI_SendData( uint8_t *pdata,  uint16_t len, uint32_t timeout)
     Padding[1] = '\n';
 
     spi_tx_event=1;
-    if( HAL_SPI_Transmit_IT(&hspi, Padding, 1) != HAL_OK)
+    if(HAL_SPI_Transmit_IT(&hspi_wifi, Padding, 1) != HAL_OK)
     {
       WIFI_DISABLE_NSS();
       UNLOCK_SPI();

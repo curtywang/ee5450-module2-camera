@@ -62,6 +62,7 @@ and MQTT to stream the following sensor data at roughly 1 Hz:
 | air pressure | LPS22HB | `I2C2` | `board_test/air_pressure` | No |
 
 **New Aim:** The image sensor data should be streamed at 0.5 Hz (every two seconds):
+
 | sensor type | Sensor | uC Conn. | MQTT topic | Example? |
 | ----------- | ------ | -------- | ---------- | -------- |
 | image | ArduCam 2MP Mini Plus | `SPI1/I2C1` | `board_test/camera` | No |
