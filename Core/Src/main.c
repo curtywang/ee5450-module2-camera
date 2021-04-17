@@ -239,8 +239,8 @@ void reset_network_thread(struct global_data_t* global_data) {
     ULONG actual_flags;
     // the mutex check that another thread isn't resetting
     UINT status = tx_mutex_get(&global_data->mutex_network_reset, TX_NO_WAIT);
-    tx_event_flags_set(&global_event_flags, EVT_WIFI_READY, TX_AND_CLEAR);
     if (status == TX_SUCCESS) {
+        tx_event_flags_set(&global_event_flags, EVT_WIFI_READY, TX_AND_CLEAR);
         status = tx_thread_reset(&global_data->thread_network_setup);  // reset network setup thread
         printf("%d", status);
         status = tx_thread_resume(&global_data->thread_network_setup);  // start the network setup thread
