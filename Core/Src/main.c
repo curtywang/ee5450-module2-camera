@@ -132,23 +132,7 @@ void tx_application_define(void* first_unused_memory) {
                               1, 1, TX_NO_TIME_SLICE, TX_AUTO_START);
     if (status != TX_SUCCESS)
         printf("thread creation failed\r\n");
-//
-//    tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
-//    status = tx_thread_create(&global_data->threads[0], "thread 0",
-//                              blink_PA_5, (ULONG)global_data,
-//                              pointer, STACK_SIZE,
-//                              3, 3, TX_NO_TIME_SLICE, TX_AUTO_START);
-//    if (status != TX_SUCCESS)
-//        printf("thread creation failed\r\n");
-//
-//    tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
-//    status = tx_thread_create(&global_data->threads[1], "thread 1",
-//                              blink_PB_14, (ULONG)global_data,
-//                              pointer, STACK_SIZE,
-//                              3, 3, TX_NO_TIME_SLICE, TX_AUTO_START);
-//    if (status != TX_SUCCESS)
-//        printf("thread creation failed\r\n");
-//
+
 //    tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
 //    status = tx_thread_create(&global_data->threads[2], "thread 2",
 //                              thread_temperature, (ULONG)global_data,
@@ -228,22 +212,6 @@ void thread_network_setup(ULONG global_data_ulong) {
     }
 
     tx_event_flags_set(&global_event_flags, EVT_WIFI_READY, TX_OR);
-}
-
-
-/**
- * @brief thread that blinks PA5 at given interval.
- * @param global_data_ulong ->interval_ld1: interval of blinking ld1 at 50% duty cycle
- */
-_Noreturn void blink_PA_5(ULONG global_data_ulong) {
-    struct global_data_t* global_data = (struct global_data_t*)global_data_ulong;
-    uint32_t ticks_duty_cycle = (global_data->interval_ld1 * 100) / 2;
-    while (1) {
-        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
-        tx_thread_sleep(ticks_duty_cycle);  // this is in ticks, which is default 100 per second.
-        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
-        tx_thread_sleep(ticks_duty_cycle);
-    }
 }
 
 
