@@ -7,7 +7,7 @@
 
 #include "main.h"
 
-UINT send_nx_mqtt_message(struct global_data_t* global_data, char* topic, char* message);
+UINT send_nx_mqtt_message(struct global_data_t* global_data, char* topic, char* message, size_t message_length);
 void get_temperature_message(struct global_data_t* global_data, char* message, size_t message_size);
 void get_accelerometer_message(struct global_data_t* global_data, char* message, size_t message_size);
 /* TODO: declare your other sensor data functions here */

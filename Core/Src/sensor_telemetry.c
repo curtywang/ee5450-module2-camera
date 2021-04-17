@@ -9,16 +9,19 @@
  * @brief sends a message with the topic given to the MQTT client
  * @param global_data: pointer to the global data structure
  * @param topic: pointer to the topic buffer (should be null-terminated)
- * @param message: pointer to the message buffer (should be null-terminated)
+ * @param message: pointer to the message buffer (may be null-terminated)
+ * @param message_length: message buffer length if buffer not null-terminated (use 0 otherwise)
  * @return status of the client
  */
 UINT send_nx_mqtt_message(struct global_data_t* global_data,
-                          char* topic, char* message) {
+                          char* topic, char* message, size_t message_length) {
     UINT status;
     tx_mutex_get(&global_data->mutex_mqtt, TX_WAIT_FOREVER);
+    if (message_length == 0)
+        message_length = strlen(message);
     status = nxd_mqtt_client_publish(&global_data->mqtt_client,
                                      topic, strlen(topic),
-                                     message, strlen(message),
+                                     message, message_length,
                                      0, 1, NX_WAIT_FOREVER);
     tx_mutex_put(&global_data->mutex_mqtt);
     return status;

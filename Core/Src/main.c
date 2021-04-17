@@ -273,7 +273,7 @@ _Noreturn void thread_temperature(ULONG global_data_ulong) {
 
     while (1) {
         get_temperature_message(global_data, message, message_size);
-        status = send_nx_mqtt_message(global_data, topic, message);
+        status = send_nx_mqtt_message(global_data, topic, message, 0);
         if (status != NX_SUCCESS) {
             reset_network_thread(global_data);
         }
@@ -307,7 +307,7 @@ _Noreturn void thread_accelerometer(ULONG global_data_ulong) {
 
     while (1) {
         get_accelerometer_message(global_data, message, message_size);
-        status = send_nx_mqtt_message(global_data, topic, message);
+        status = send_nx_mqtt_message(global_data, topic, message, 0);
         if (status != NX_SUCCESS) {
             reset_network_thread(global_data);
         }

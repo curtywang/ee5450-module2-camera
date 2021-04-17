@@ -15,7 +15,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f845f09c-bb04-4f2d-a1c3-2bb2b4498768" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/sensor_telemetry.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/sensor_telemetry.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/sensor_telemetry.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/sensor_telemetry.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +121,7 @@
       <workItem from="1617918081681" duration="3383000" />
       <workItem from="1617994980400" duration="1774000" />
       <workItem from="1618452539597" duration="5216000" />
-      <workItem from="1618609928744" duration="2895000" />
+      <workItem from="1618609928744" duration="4255000" />
     </task>
     <servers />
   </component>
