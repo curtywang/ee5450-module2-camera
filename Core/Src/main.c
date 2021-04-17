@@ -198,14 +198,14 @@ void thread_network_setup(ULONG global_data_ulong) {
 
     snprintf(topic, topic_size, "board_test/hello");
     snprintf(message, message_size, "board says Hello!!!");
-    status = send_nx_mqtt_message(global_data, topic, message);
+    status = send_nx_mqtt_message(global_data, topic, message, 0);
     if (status != 0)
         return;
 
     for (size_t i = 0; i < 7; i++) {
         current_tick = tx_time_get();
         snprintf(message, message_size, "hello the time is: %lu", current_tick);
-        status = send_nx_mqtt_message(global_data, topic, message);
+        status = send_nx_mqtt_message(global_data, topic, message, 0);
         if (status != 0)
             return;
         tx_thread_sleep(tick_interval / 4);
