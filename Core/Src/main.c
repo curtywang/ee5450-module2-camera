@@ -52,6 +52,7 @@ extern SPI_HandleTypeDef hspi_wifi;
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 void thread_camera_setup(ULONG global_data_ulong);
+void thread_camera_stream(ULONG global_data_ulong);
 void thread_network_setup(ULONG global_data_ulong);
 _Noreturn void blink_PA_5(ULONG global_data_ulong);
 _Noreturn void blink_PB_14(ULONG global_data_ulong);
@@ -117,13 +118,21 @@ void tx_application_define(void* first_unused_memory) {
     status = tx_byte_pool_create(&global_data->byte_pool_0, "byte pool 0",
                         global_data->memory_area, BYTE_POOL_SIZE);
 
-//    status = tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
-//    status = tx_thread_create(&global_data->thread_camera_setup, "thread camera setup",
-//                              thread_camera_setup, (ULONG)global_data,
-//                              pointer, STACK_SIZE,
-//                              1, 1, TX_NO_TIME_SLICE, TX_AUTO_START);
-//    if (status != TX_SUCCESS)
-//        printf("thread creation failed\r\n");
+    status = tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
+    status = tx_thread_create(&global_data->thread_camera_setup, "thread camera setup",
+                              thread_camera_setup, (ULONG)global_data,
+                              pointer, STACK_SIZE,
+                              1, 1, TX_NO_TIME_SLICE, TX_AUTO_START);
+    if (status != TX_SUCCESS)
+        printf("thread creation failed\r\n");
+
+    status = tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
+    status = tx_thread_create(&global_data->threads[2], "thread camera stream",
+                              thread_camera_stream, (ULONG)global_data,
+                              pointer, STACK_SIZE,
+                              2, 2, TX_NO_TIME_SLICE, TX_AUTO_START);
+    if (status != TX_SUCCESS)
+        printf("thread creation failed\r\n");
 
     status = tx_byte_allocate(&global_data->byte_pool_0, (VOID **) &pointer, STACK_SIZE, TX_NO_WAIT);
     status = tx_thread_create(&global_data->thread_network_setup, "thread net test",
@@ -164,9 +173,8 @@ void thread_camera_setup(ULONG global_data_ulong) {
     while (status != 0x73) {
         status = arducam_get_version();
     }
-    // TODO: event flag here to allow camera to continue
-    size_t num_bytes = arducam_read_image(FRAMEBUFFER_SIZE, global_data->framebuffer);
-    printf("num bytes image: %d", num_bytes);
+
+    tx_event_flags_set(&global_event_flags, EVT_CAMERA_READY, TX_OR);
 }
 
 
@@ -247,6 +255,47 @@ void reset_network_thread(struct global_data_t* global_data) {
     }
     tx_event_flags_get(&global_event_flags, EVT_WIFI_READY, TX_AND, &actual_flags, TX_WAIT_FOREVER);
     tx_mutex_put(&global_data->mutex_network_reset);  // if not owned, will error out anyway
+}
+
+
+/**
+ * @brief thread that reads an image from the camera and sends it out via MQTT
+ * @param global_data_ulong
+ */
+_Noreturn void thread_camera_stream(ULONG global_data_ulong) {
+    ULONG actual_flags;
+    struct global_data_t* global_data = (struct global_data_t*) global_data_ulong;
+    const size_t CHUNK_SIZE = 4096;
+    // header "img_id: 000, chunk_id: 000, num_chunks: 000, chunk_size: 000, data:" is 68 characters
+    const size_t HEADER_SIZE = 68;
+    const size_t MESSAGE_SIZE = HEADER_SIZE + CHUNK_SIZE;
+    char message_buffer[MESSAGE_SIZE];
+    const size_t topic_size = 30;
+    char topic[topic_size + 1];
+    memset(topic, 0, topic_size + 1);
+    memset(message_buffer, 0, MESSAGE_SIZE);
+    snprintf(topic, topic_size, "board_test/camera");
+    uint8_t image_id = 0;
+
+    tx_event_flags_get(&global_event_flags, EVT_WIFI_READY | EVT_CAMERA_READY, TX_AND, &actual_flags, TX_WAIT_FOREVER);
+
+    while (1) {
+        size_t num_bytes = arducam_read_image(FRAMEBUFFER_SIZE, global_data->framebuffer);
+        size_t num_chunks = num_bytes / CHUNK_SIZE + (num_bytes % CHUNK_SIZE != 0);
+
+        // trying to send out this one image in chunks!
+        for (size_t chunk_id = 0; chunk_id < num_chunks; chunk_id++) {
+            snprintf(message_buffer, HEADER_SIZE + 1,
+                     "img_id: %3u, chunk_id: %3u, num_chunks: %3u, chunk_size: %3u, data:",
+                     image_id, chunk_id, num_chunks, CHUNK_SIZE);
+            memcpy(&(message_buffer[HEADER_SIZE]), &(global_data->framebuffer[chunk_id * CHUNK_SIZE]), CHUNK_SIZE);
+
+            send_nx_mqtt_message(global_data, topic, message_buffer, MESSAGE_SIZE);
+        }
+
+        image_id++;
+        tx_thread_sleep(200);
+    }
 }
 
 

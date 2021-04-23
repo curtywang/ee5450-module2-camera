@@ -103,7 +103,7 @@ UINT cleanup_nx_wifi(struct global_data_t* global_data) {
  * @return
  */
 UINT setup_nx_mqtt_and_connect(struct global_data_t* global_data) {
-    UINT status;
+    ULONG status;
     status = nxd_mqtt_client_create(&global_data->mqtt_client, "MQTT Client",
                                     "le_board", sizeof("le_board") - 1,
                                     &global_data->nx_ip, &global_data->nx_pool,

@@ -9,7 +9,7 @@
 
 #define WIFI_AP_SSID "Hello Home"  // TODO: change this to yours
 #define WIFI_AP_KEY "TaiwanNumbaOne"  // TODO: change this to yours
-#define MQTT_BROKER_IP IP_ADDRESS(192, 168, 11, 123)  // TODO: change this IP address to yours
+#define MQTT_BROKER_IP IP_ADDRESS(192, 168, 11, 115)  // TODO: change this IP address to yours
 
 UINT setup_wifi(bool scan_for_aps);
 void cleanup_wifi();

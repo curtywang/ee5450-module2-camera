@@ -14,8 +14,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f845f09c-bb04-4f2d-a1c3-2bb2b4498768" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/threads.drawio" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/main.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/sensor_telemetry_setup.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/sensor_telemetry_setup.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/sensor_telemetry.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/sensor_telemetry.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/sensor_telemetry_setup.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/sensor_telemetry_setup.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +76,7 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../module-2-hw-2-janguyen86" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../module-2-hw-2-sjung16" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Debugger.ObjectiveC" />
   </component>
@@ -119,7 +124,7 @@
       <workItem from="1617918081681" duration="3383000" />
       <workItem from="1617994980400" duration="1774000" />
       <workItem from="1618452539597" duration="5216000" />
-      <workItem from="1618609928744" duration="4907000" />
+      <workItem from="1618609928744" duration="22959000" />
     </task>
     <servers />
   </component>
@@ -143,8 +148,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Core/Src/main.c</url>
-          <line>168</line>
-          <option name="timeStamp" value="14" />
+          <line>196</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Core/Src/main.c</url>
+          <line>202</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

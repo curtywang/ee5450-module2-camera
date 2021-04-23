@@ -23,6 +23,7 @@ UINT send_nx_mqtt_message(struct global_data_t* global_data,
                                      topic, strlen(topic),
                                      message, message_length,
                                      0, 1, NX_WAIT_FOREVER);
+    tx_thread_sleep(5);  // The WiFi module doesn't like sending out data too often
     tx_mutex_put(&global_data->mutex_mqtt);
     return status;
 }
